@@ -1,13 +1,7 @@
 $(document).ready(function () {
 
     var url = '/student/api';
-
-    var getCurrentTime = function() {
-
-        return Date.now();
-
-    }
-
+    
     var listRequest = function (postData, jtParams) {
 
         return $.Deferred(function ($dfd) {
@@ -79,7 +73,6 @@ $(document).ready(function () {
         fields: {
             StudentID: {
                 title: 'Student ID',
-                defaultValue: getCurrentTime(),
                 key: true,
                 width: '20%',
                 create: true,
@@ -126,6 +119,7 @@ $(document).ready(function () {
 
             data.form.find('input[name=BeginDate], input[name=Birth]').datepicker({ dateFormat: 'dd-mm-yy' }).datepicker('setDate','today');
             data.form.find('input[name=StudentID]').attr('readonly',true);
+            data.form.find('input[name=StudentID]').val(Date.now());
         }
     });
 
