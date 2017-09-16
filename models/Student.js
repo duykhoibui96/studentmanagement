@@ -12,8 +12,8 @@ var StudentSchema = new Schema ({
 
     Gender: String,
     Name: String,
-    Birth: Date,
-    BeginDate: Date
+    Birth: String,
+    BeginDate: String
 
 },{ collection: 'Student'});
 

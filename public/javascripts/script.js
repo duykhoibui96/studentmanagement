@@ -95,21 +95,11 @@ $(document).ready(function () {
             },
             Birth: {
                 title: 'Date of birth',
-                width: '20%',
-                display: function(data){
-
-                    return new Date(data.record.Birth).toLocaleDateString('en-GB');
-
-                }
+                width: '20%'
             },
             BeginDate: {
                 title: 'Begin date',
-                width: '20%',
-                display: function(data){
-
-                    return new Date(data.record.BeginDate).toLocaleDateString('en-GB');
-
-                }
+                width: '20%'
 
             }
             
