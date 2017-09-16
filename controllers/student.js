@@ -70,8 +70,8 @@ api.get = function (req, res) {
 
 api.create = function (req, res) {
 
-    console.log(req.body);
     var newStudent = new Student(req.body);
+    
     newStudent.save(function (err, doc) {
 
         if (err) {
@@ -101,7 +101,8 @@ api.create = function (req, res) {
 api.update = function (req, res) {
 
     var id = req.body.StudentID;
-    var obj = Object.assign(req.body, { StudentID: undefined });
+    var obj = Object.assign(req.body);
+    delete obj.StudentID;
     Student.findOneAndUpdate({ StudentID: id }, obj, { new: true }).exec(function (err, doc) {
 
         if (err) {

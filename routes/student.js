@@ -9,6 +9,6 @@ router.get('/api', api.list);
 router.get('/api/details/:id', api.get);
 router.post('/api', api.create);
 router.put('/api', api.update);
-router.delete('/delete', api.delete);
+router.delete('/api', api.delete);
 
 module.exports = router;

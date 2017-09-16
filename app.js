@@ -11,7 +11,8 @@ var student = require('./routes/student');
 
 var app = express();
 
-mongoose.connect(`mongodb://localhost/studentmanagement`);
+//mongoose.connect(`mongodb://localhost/studentmanagement`);
+mongoose.connect('mongodb://buiduykhoi:buiduykhoi@ds137054.mlab.com:37054/studentmanagement');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

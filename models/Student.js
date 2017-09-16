@@ -5,16 +5,17 @@ var StudentSchema = new Schema ({
 
     StudentID: {
 
-        type: 'String',
+        type: String,
         unique: true
 
     },
 
     Gender: String,
     Name: String,
-    Birth: String,
-    BeginDate: String
+    Birth: Date,
+    BeginDate: Date
 
 },{ collection: 'Student'});
 
-mongoose.exports = mongoose.model('Student',StudentSchema);
+
+module.exports = mongoose.model('Student',StudentSchema);
