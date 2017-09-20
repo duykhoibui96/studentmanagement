@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "jtable": "^2.5.0"
+    "bootstrap": "^3.3.7"
   }
 }

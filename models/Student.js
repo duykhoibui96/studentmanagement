@@ -3,17 +3,9 @@ var Schema = mongoose.Schema;
 
 var StudentSchema = new Schema ({
 
-    StudentID: {
-
-        type: String,
-        unique: true
-
-    },
-
-    Gender: String,
-    Name: String,
-    Birth: String,
-    BeginDate: String
+    gender: String,
+    name: String,
+    age: Number
 
 },{ collection: 'Student'});
 

@@ -7,24 +7,13 @@ api.list = function (req, res) {
 
         if (err) {
             console.log(err);
-            res.json({
-
-                Result: 'ERROR',
-                Message: err
-
-            })
+            res.status(500).send();
         }
         else {
 
-            console.log(docs);
-            var startIndex = req.query.jtStartIndex;
-            var pageSize = req.query.jtPageSize;
+            res.status(200).json({
 
-            res.json({
-
-                Result: 'OK',
-                TotalRecordCount: docs.length,
-                Records: docs.slice(startIndex, startIndex + pageSize)
+                data: docs
 
             })
 
@@ -41,24 +30,26 @@ api.get = function (req, res) {
 
     var id = req.params.id;
 
-    newStudent.findOne({ StudentID: id }).exec(function (err, doc) {
+    Student.findById(id).exec(function (err, doc) {
 
         if (err) {
             console.log(err);
-            res.json({
-
-                Result: 'ERROR',
-                Message: err
-
-            })
+            res.status(500).send();
         }
         else {
-            res.json({
 
-                Result: 'OK',
-                Record: doc
+            if (doc == null)
+                res.status(404).json({
 
-            })
+                    msg: 'not found'
+
+                })
+            else
+                res.status(200).json({
+
+                    data: doc
+
+                })
 
         }
 
@@ -70,26 +61,18 @@ api.get = function (req, res) {
 
 api.create = function (req, res) {
 
+    console.log(req.body);
     var newStudent = new Student(req.body);
-    
-    newStudent.save(function (err, doc) {
+
+    newStudent.save(function(err) {
 
         if (err) {
             console.log(err);
-            res.json({
-
-                Result: 'ERROR',
-                Message: err
-
-            })
+            res.status(500).send();
         }
         else {
-            res.json({
 
-                Result: 'OK',
-                Record: doc
-
-            })
+            res.status(200).json({ msg: 'added'});
 
         }
 
@@ -100,27 +83,23 @@ api.create = function (req, res) {
 
 api.update = function (req, res) {
 
-    var id = req.body.StudentID;
-    var obj = Object.assign(req.body);
-    delete obj.StudentID;
-    Student.findOneAndUpdate({ StudentID: id }, obj, { new: true }).exec(function (err, doc) {
+    var id = req.params.id;
+    Student.findByIdAndUpdate(id, req.body, { new: true }).exec(function (err, doc) {
 
         if (err) {
             console.log(err);
-            res.json({
-
-                Result: 'ERROR',
-                Message: err
-
-            })
+            res.status(500).send();
         }
         else {
-            res.json({
 
-                Result: 'OK',
-                Record: doc
+            if (doc == null)
+                res.status(404).json({
 
-            })
+                    msg: 'not found'
+
+                })
+            else
+            res.status(200).json({ msg: 'updated'});
 
         }
 
@@ -131,23 +110,22 @@ api.update = function (req, res) {
 
 api.delete = function (req, res) {
 
-    Student.remove(req.body).exec(function (err, doc) {
+    Student.findByIdAndRemove(req.params.id).exec(function (err, doc) {
 
         if (err) {
             console.log(err);
-            res.json({
-
-                Result: 'ERROR',
-                Message: err
-
-            })
+            res.status(500).send();
         }
         else {
-            res.json({
 
-                Result: 'OK'
+            if (doc == null)
+                res.status(404).json({
 
-            })
+                    message: 'not found'
+
+                })
+            else
+                res.status(200).json({ msg: 'deleted'});
 
         }
 

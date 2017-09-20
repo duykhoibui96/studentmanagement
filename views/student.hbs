@@ -1,4 +1,45 @@
-<div class="text-center">
-    <img src="/images/student_title.png" alt="" height="200px">
+<div class="title">
+    <h1>STUDENT MANAGEMENT</h1>
 </div>
-<div id="student-table"></div>
+<div class="student-form">
+    <form id="student-add-form" class="form-inline">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select name="gender" class="form-control" id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" name="age" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <form id="student-update-form" class="form-inline">
+        <hr>
+        <input type="hidden" class="form-control" id="id" name="id">
+        <div class="form-group">
+            <label for="up-name">Name:</label>
+            <input type="text" class="form-control" id="up-name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="up-gender">Gender:</label>
+            <select name="gender" class="form-control" id="up-gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="up-age">Age:</label>
+            <input type="number" class="form-control" id="up-age" name="age" required>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-default">Cancel</button>
+    </form>
+</div>
+<div id="display"></div>

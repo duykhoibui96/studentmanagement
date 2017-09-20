@@ -4,13 +4,38 @@
 <head>
   <title>{{title}}</title>
   <link rel='stylesheet' href='/lib/bootstrap/dist/css/bootstrap.min.css' />
-  <link rel='stylesheet' href='/lib/jqueryui/themes/mint-choc/jquery-ui.min.css' />
-  <link rel='stylesheet' href='/lib/jtable/lib/themes/jqueryui/jtable_jqueryui.min.css' />
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="/lib/jquery/dist/jquery.min.js"></script>
   <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/lib/jqueryui/jquery-ui.min.js" type="text/javascript"></script>
-  <script src="/lib/jtable/lib/jquery.jtable.min.js" type="text/javascript"></script>
+  <script src="/svlib/handlebars/dist/handlebars.min.js"></script>
+  <script id="table" type="text/x-handlebars-template">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          \{{#each records}}
+          <tr id="\{{_id}}">
+            <td data-type="order">\{{counter @index}}</td>
+            <td data-type="name">\{{name}}</td>
+            <td data-type="gender">\{{gender}}</td>
+            <td data-type="age">\{{age}}</td>
+            <td class="config">
+              <span class="glyphicon glyphicon-edit" data-student-id="\{{_id}}" data-method="update"></span>
+              <span class="glyphicon glyphicon-remove" data-student-id="\{{_id}}" data-method="delete"></span>
+            </td>
+          </tr>
+          \{{/each}}
+        </tbody>
+      </table>
+    </div>
+  </script>
   <script src="/javascripts/script.js"></script>
 </head>
 

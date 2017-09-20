@@ -1,17 +1,13 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: linear-gradient(to right, #434343 0%, black 100%);
+  color: white;
 }
 
 a {
   color: #00B7FF;
 }
 
-select, input {
-
-  color: black !important;
-
-}
 
 .jumbotron {
 
@@ -24,5 +20,39 @@ select, input {
   padding-top: 50px;
   padding-bottom: 50px;
 
+}
+
+.student-form {
+
+  margin: 20px 0px;
+
+}
+
+.student-form div {
+
+  margin-right: 20px;
+
+}
+
+.config * {
+
+  margin-right: 10px;
+
+}
+
+.config *:hover {
+  
+    cursor: pointer;
+  
+}
+
+.config *[data-method=delete]:hover {
+  
+    color: red;
+}
+
+.config *[data-method=update]:hover {
+  
+    color: green;
 }
 
