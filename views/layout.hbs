@@ -3,13 +3,14 @@
 
 <head>
   <title>{{title}}</title>
-  <link rel='stylesheet' href='/lib/bootstrap/dist/css/bootstrap.min.css' />
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href="/stylesheets/style.css" />
   <script src="/lib/jquery/dist/jquery.min.js"></script>
   <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/svlib/handlebars/dist/handlebars.min.js"></script>
   <script id="table" type="text/x-handlebars-template">
-    <div class="table-responsive">
+    <div class="table-responsive" style="padding: 10px">
       <table class="table">
         <thead>
           <tr>
@@ -20,29 +21,35 @@
           </tr>
         </thead>
         <tbody>
+          \{{#if isEmpty}}
+          <tr><td colspan="4" class="text-center">No data available</td></tr>
+          \{{/if}}
           \{{#each records}}
           <tr id="\{{_id}}">
             <td data-type="order">\{{counter @index}}</td>
             <td data-type="name">\{{name}}</td>
             <td data-type="gender">\{{gender}}</td>
             <td data-type="age">\{{age}}</td>
-            <td class="config">
+            <td class="config" style="border-top: none">
               <span class="glyphicon glyphicon-edit" data-student-id="\{{_id}}" data-method="update"></span>
               <span class="glyphicon glyphicon-remove" data-student-id="\{{_id}}" data-method="delete"></span>
             </td>
           </tr>
           \{{/each}}
         </tbody>
-      </table>
+      </table>  
     </div>
   </script>
   <script src="/javascripts/script.js"></script>
 </head>
 
 <body>
+  <div id="loading" style="position: absolute; top: 35%; left: 50%">
+      <i class="fa fa-spinner fa-spin fa-3x"></i>
+  </div>
   <header>
   </header>
-  <div class="container content">
+  <div class="content">
     {{{body}}}
   </div>
   <footer></footer>

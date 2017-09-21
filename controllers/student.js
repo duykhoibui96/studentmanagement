@@ -3,6 +3,7 @@ var api = {};
 
 api.list = function (req, res) {
 
+    console.log('list request');
     Student.find().exec(function (err, docs) {
 
         if (err) {
@@ -29,6 +30,7 @@ api.list = function (req, res) {
 api.get = function (req, res) {
 
     var id = req.params.id;
+    console.log('get id = ' + id);
 
     Student.findById(id).exec(function (err, doc) {
 
@@ -41,7 +43,7 @@ api.get = function (req, res) {
             if (doc == null)
                 res.status(404).json({
 
-                    msg: 'not found'
+                    msg: 'student not found'
 
                 })
             else
@@ -61,6 +63,7 @@ api.get = function (req, res) {
 
 api.create = function (req, res) {
 
+    console.log('add data: ');
     console.log(req.body);
     var newStudent = new Student(req.body);
 
@@ -84,6 +87,9 @@ api.create = function (req, res) {
 api.update = function (req, res) {
 
     var id = req.params.id;
+    console.log('update id = ' + id);
+    console.log('update data: ');
+    console.log(req.body);
     Student.findByIdAndUpdate(id, req.body, { new: true }).exec(function (err, doc) {
 
         if (err) {
@@ -95,7 +101,7 @@ api.update = function (req, res) {
             if (doc == null)
                 res.status(404).json({
 
-                    msg: 'not found'
+                    msg: 'student not found'
 
                 })
             else
@@ -110,7 +116,9 @@ api.update = function (req, res) {
 
 api.delete = function (req, res) {
 
-    Student.findByIdAndRemove(req.params.id).exec(function (err, doc) {
+    var id = req.params.id;
+    console.log('delete id = ' + id);
+    Student.findByIdAndRemove(id).exec(function (err, doc) {
 
         if (err) {
             console.log(err);
@@ -118,6 +126,7 @@ api.delete = function (req, res) {
         }
         else {
 
+            console.log(doc);
             if (doc == null)
                 res.status(404).json({
 

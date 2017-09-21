@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var index = require('./routes/index');
-var student = require('./routes/student');
-var api = require('./routes/api');
+var index = require('./routes/views/index');
+var student = require('./routes/views/student');
+var studentApi = require('./routes/api/student');
 
 var app = express();
 
@@ -36,7 +36,7 @@ app.use('/svlib',express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
 app.use('/student', student);
-app.use('/api', api);
+app.use('/api/student', studentApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
